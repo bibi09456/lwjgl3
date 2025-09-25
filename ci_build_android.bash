@@ -19,6 +19,10 @@ elif [ "$LWJGL_BUILD_ARCH" == "x64" ]; then
 fi
 
 export TARGET=$NDK_TARGET-linux-android$NDK_SUFFIX
+wget https://dl.google.com/android/repository/android-ndk-r29-beta4-linux.zip
+unzip -K android-ndk-r29-beta4-linux.zip -d $HOME
+ANDROID_NDK_HOME=$HOME/android-ndk-r29-beta4
+rm android-ndk-r29-beta4-linux.zip
 export PATH=$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 LWJGL_NATIVE=bin/libs/native/linux/$LWJGL_BUILD_ARCH/org/lwjgl
