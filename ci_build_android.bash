@@ -38,7 +38,7 @@ if [ "$SKIP_LIBFFI" != "1" ]; then
   cd libffi
 
   # Build libffi
-  bash configure --host=$TARGET --prefix=$PWD/$NDK_TARGET-unknown-linux-android$NDK_SUFFIX CC=${TARGET}21-clang CXX=${TARGET}21-clang++ CFLAGS="-O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-loopfusion-greedy -mllvm -polly-reschedule -mllvm -polly-postopts -mllvm -polly-num-threads=0 -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -mllvm -polly-scheduling-chunksize=1" CXXFLAGS="-O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-loopfusion-greedy -mllvm -polly-reschedule -mllvm -polly-postopts -mllvm -polly-num-threads=0 -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -mllvm -polly-scheduling-chunksize=1"
+  bash configure --host=$TARGET --prefix=$PWD/$NDK_TARGET-unknown-linux-android$NDK_SUFFIX CC=${TARGET}21-clang CXX=${TARGET}21-clang++ CFLAGS="-O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-loopfusion-greedy -mllvm -polly-reschedule -mllvm -polly-postopts -mllvm -polly-num-threads=0 -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -mllvm -polly-scheduling-chunksize=1" CXXFLAGS="-O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-loopfusion-greedy -mllvm -polly-reschedule -mllvm -polly-postopts -mllvm -polly-num-threads=0 -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -mllvm -polly-scheduling-chunksize=1" LDFLAGS="-fuse-ld=lld -O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly"
   make -j4
   cd ..
 
@@ -56,6 +56,7 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
 
   export CC=$NDK_TARGET-linux-android${NDK_SUFFIX}21-clang
   export CFLAGS="-O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-loopfusion-greedy -mllvm -polly-reschedule -mllvm -polly-postopts -mllvm -polly-num-threads=0 -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -mllvm -polly-scheduling-chunksize=1"
+  export LDFLAGS="-fuse-ld=lld -O3 -mcpu=cortex-a725 -flto=thin -fwhole-program-vtables -mllvm -polly"
 
   ./configure \
     --host=$TARGET \
@@ -76,6 +77,7 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
   cp   freetype-$BUILD_FREETYPE_VERSION/build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/
   rm -rf freetype-$BUILD_FREETYPE_VERSION
   unset BUILD_FREETYPE_VERSION
+  unset LDFLAGS
   unset CFLAGS
   unset CC
 fi
