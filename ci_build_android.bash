@@ -22,7 +22,7 @@ export TARGET=$NDK_TARGET-linux-android$NDK_SUFFIX
 wget -q https://dl.google.com/android/repository/android-ndk-r29-linux.zip
 unzip -Kq android-ndk-r29-linux.zip -d $HOME
 ANDROID_NDK_HOME=$HOME/android-ndk-r29
-rm android-ndk-r29-beta4-linux.zip
+rm android-ndk-r29-linux.zip
 export PATH=$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 LWJGL_NATIVE=bin/libs/native/linux/$LWJGL_BUILD_ARCH/org/lwjgl
